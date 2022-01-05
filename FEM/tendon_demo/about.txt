@@ -1,0 +1,13 @@
+These scripts are to be used with oomph-lib which can be found at http://oomph-lib.maths.man.ac.uk/doc/html/index.html.
+
+This code demonstrates how I model tendons in oomph-lib using a very simple example of a transversely isotropic hyperelastic cylinder. 
+
+tendon_demo.cc contains the main function and sets up the problem.
+
+MyDerivedClasses.h contains additional functionality that needs to be added for this specific problem e.g. a new get_stress function for our anisotropic material. We also overwrite the element's output functions here to produce the desired quantities.
+
+parameters.h contains all parameters associated with the problem. These values can be changed using command line arguments which I input using a shell script.
+
+tendon_demo.sh is a shell script which loops over the desired parameter values, compiles and runs the code, and creates new folders for the output. 
+
+Makefile.am contains the libraries that must be linked in order for our code to run. These are not the standard oomph-lib libraries for this problem, some additional work must be done in order to make the get_stress function accept an eulerian position as an argument. 
